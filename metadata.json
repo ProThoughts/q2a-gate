@@ -1,0 +1,12 @@
+{
+	"name": "GATE Questions",
+	"description": "This plugin allows to mark bad/notbad questions and adds GATE questions to GATE list in Question Pages of Q2A",
+	"version": "1.0",
+	"date": "2016-11-14",
+	"uri": "https://github.com/arjunsuresh/q2a-gate",
+	"update_uri": "https://raw.githubusercontent.com/arjunsuresh/q2a-gate/master/metadata.json",
+	"author": "Arjun Suresh",
+	"author_uri": "http://gateoverflow.in/user/Arjun",
+	"license": "GPLv2",
+	"min_q2a": "1.5"
+}
