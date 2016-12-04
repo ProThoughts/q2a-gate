@@ -55,7 +55,7 @@ background:url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\
 	{
 		if (!empty($q_view['form'])) {
 			$user_level = qa_get_logged_in_level();
-			if($user_level >=  qa_opt('qa_gate_questions_level') )
+			if($user_level >=  qa_opt('qa_gate_questions_level') && $this->template === 'question' )
 			{
 
 				$postid=$q_view['raw']['postid'];
