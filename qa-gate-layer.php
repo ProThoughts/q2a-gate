@@ -35,6 +35,7 @@ background:url('data:image/svg+xml;utf8,<svg xmlns=\"https://www.w3.org/2000/svg
 	{
 		$content = isset($q_view['content']) ? $q_view['content'] : '';
 		$postid = $q_view['raw']['postid'];
+				require_once QA_INCLUDE_DIR.'db/metas.php';
 		if(qa_db_postmeta_get($postid, "bad"))
 			$this->output('<div class="qa-q-view-content bad-question">');
 		else
@@ -45,6 +46,7 @@ background:url('data:image/svg+xml;utf8,<svg xmlns=\"https://www.w3.org/2000/svg
 	public function a_item_content($a_item)
 	{
 		$postid = $a_item['raw']['postid'];
+				require_once QA_INCLUDE_DIR.'db/metas.php';
 		if(qa_db_postmeta_get($postid, "wrong"))
 			$this->output('<div class="qa-a-item-content wrong-answer">');
 		else
