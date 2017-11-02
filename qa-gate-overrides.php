@@ -9,6 +9,7 @@ function qa_db_posts_basic_selectspec($voteuserid=null, $full=false, $user=true)
 		//$res['source'] .= " join ^posts gfeat on ^posts.postid = gfeat.postid and (strcmp(substring(gfeat.title,1,4), 'GATE') =0)";
 
 		$res['source'] .= " join ^posts gfeat on ^posts.postid = gfeat.postid and gfeat.title regexp 'GATE[1-2][0-9][0-9][0-9].*'";
+		//$res['source'] .= " join ^posts gfeat on ^posts.postid = gfeat.postid and gfeat.title regexp '.*'";
 		return $res;
 	}
 	return  qa_db_posts_basic_selectspec_base($voteuserid, $full, $user);
@@ -25,7 +26,7 @@ function qa_q_list_page_content($questions, $pagesize, $start, $count, $sometitl
 		$categorytitlehtml = qa_html($navcategories[$categoryid]['title']);		 
 		$sometitle = $categoryid != null ? qa_lang_html_sub('gate_lang/gate_qs_in_x', $categorytitlehtml) : qa_lang_html('gate_lang/gate_qs_title');
 		$nonetitle = $categoryid != null ? qa_lang_html_sub('featured_lang/nogate_qs_in_x', $categorytitlehtml) : qa_lang_html('gate_lang/nogate_qs_title');
-		$feedpathprefix =  null;
+//		$feedpathprefix =  null;
 		if(!$categoryid){
 			$count=qa_opt('gate_qcount');
 		}

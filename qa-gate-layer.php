@@ -6,7 +6,7 @@ class qa_html_theme_layer extends qa_html_theme_base {
 	{
 		qa_html_theme_base::head_css();
 		$this->output("<style type='text/css'> .bad-question{
-background:url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\"><text x=\"5%\" y=\"25%\" font-size=\"12\" fill=\"blue\" opacity=\"0.5\">Badly Formed Question!</text></svg>')!important;}</style>");
+background:url('data:image/svg+xml;utf8,<svg xmlns=\"https://www.w3.org/2000/svg\"><text x=\"5%\" y=\"25%\" font-size=\"12\" fill=\"blue\" opacity=\"0.5\">Badly Formed Question!</text></svg>')!important;}</style>");
 	}
 	function doctype(){
 		global $qa_request;
@@ -25,6 +25,8 @@ background:url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\
 					'selected' => (qa_get('sort') === 'gate')
 
 					);
+			if($this->content['navigation']['sub']['gate']['selected'])
+				$this->content['navigation']['sub']['recent']['selected'] = 0;
 		}
 
 	}
@@ -57,6 +59,7 @@ background:url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\
 			$user_level = qa_get_logged_in_level();
 			if($user_level >=  qa_opt('qa_gate_questions_level') && $this->template === 'question' )
 			{
+				require_once QA_INCLUDE_DIR.'db/metas.php';
 
 				$postid=$q_view['raw']['postid'];
 				if(qa_db_postmeta_get($postid, "bad") == null)
@@ -77,6 +80,7 @@ background:url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\
 			$user_level = qa_get_logged_in_level();
 			if($user_level >=  qa_opt('qa_gate_answers_level') )
 			{
+				require_once QA_INCLUDE_DIR.'db/metas.php';
 
 				$postid=$q_view['raw']['postid'];
 				if(qa_db_postmeta_get($postid, "wrong") == null)
